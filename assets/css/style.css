@@ -3,7 +3,7 @@ body{
 }
 
 #headline{
-    width:700px;
+    width:80%;
     margin-top:10px;
     margin-bottom:10px;
 }
@@ -15,6 +15,7 @@ body{
     border-style: solid;
     border-color: #0daf91;
     border-width: 5px;
+    position: relative;
 }
 
 #primary{
@@ -24,5 +25,28 @@ body{
     border-color: #0daf91;
     border-width: 5px;
     margin-top:10px;
+    padding:10px;
+    position: relative;
+}
+
+#btn{
+    background-color: #0daf91;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    padding:10px;
+    font-size: 16px;
+    position:absolute;
+    bottom: 10px;
 
 }
+
+#quiz-question{
+    font-size: 22px;
+
+}
+
+#quiz-answers{
+    font-size: 16px;
+}
+

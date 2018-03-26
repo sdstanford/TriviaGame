@@ -63,15 +63,60 @@ var qAndA = [
     },
 ];
 
-console.log(qAndA.property);
+// Create main quiz function at startup
 
-//Create main quiz function
-function buildQuiz () {
+    window.onload = function startQuiz(){
+        // Create array to store quiz
+        var output = [];
+      
+        // Create for loop
+        qAndA.forEach(
+          (currentQuestion, questionNumber) => {
+      
+            // Create array to store answers
+            var answers = [];
+      
+            // Add click/radio buttons in front of each letter choice
+            for(letter in currentQuestion.answers){
+              answers.push(
+                `<label>
+                <input type="radio" name="question${questionNumber}" value="${letter}">
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+              </label>`
+              );
+            }
+      
+            // Add question and answer to divs
+            output.push(
+              `<div class="question"> ${currentQuestion.question} </div>
+              <div class="answers"> ${answers.join('')} </div>`
+            );
+          }
+        );
+      
+        // Append divs to page
+        $("#primary").append(output);
+      }
+    //For each iteration of loop, display question and answers in appropriate HTML locations
+    // console.log(qAndA[i].question);
+    // console.log(qAndA[i].answers);
+    
+    //Add radio buttons to answers
 
-//Create loop to cycle through questions and create quiz
-for (var i = 0; i < qAndA.length; i++) {
+    //Create variable to store userChoice
+    var userChoice = "";
 
-    console.log(qAndA.question);
+    //Create variables to hold correct and wrong answers, display at end of quiz
+    var correct = 0;
+    var incorrect = 0;
 
-};
-};
+    //Create click event for submit button
+    // $("#btn").click(buildQuiz())
+
+    //Create conditional to determine if correct answer
+    // if(userChoice===qAndA[i].correctAnswer){
+
+    //Create timer
+
+    //Create final page displaying score
