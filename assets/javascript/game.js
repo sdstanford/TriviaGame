@@ -88,7 +88,7 @@ var qAndA = [
             }
       
             // Add question and answer to divs
-                output.push(
+            output.push(
                 `<div class="question"> ${currentQuestion.question} </div>
                 <div class="answers"> ${answers.join('')} </div>`
             );
@@ -97,37 +97,28 @@ var qAndA = [
       
         // Append divs to page
         $("#primary").append(output);
-    }
-      
+      }
     //For each iteration of loop, display question and answers in appropriate HTML locations
+    // console.log(qAndA[i].question);
+    // console.log(qAndA[i].answers);
+    
+    //Add radio buttons to answers
 
-        // gather answer containers from our quiz
-      
-      
-        // for each question...
+    //Create variable to store userChoice
+    var userChoice = "";
 
-        function answers(){
-        var questionAnswers = quizContainer.querySelectorAll('.answers');
+    //Create variables to hold correct and wrong answers, display at end of quiz
+    var correct = 0;
+    var incorrect = 0;
 
-        myQuestions.forEach( (currentQuestion, questionNumber) => {
-      
-        var correct = 0;
-        var incorrect = 0;
+    //Create click event for submit button
+    $("#btn").click(){
 
-          // find selected answer
-          var questionAnswers = questionAnswers[questionNumber];
-          var selector = 'input[name=question'+questionNumber+']:checked';
-          var userAnswer = (questionAnswers.querySelector(selector) || {}).value;
-      
-          // if answer is correct
-          if(userAnswer===currentQuestion.correctAnswer){
-            // add to the number of correct answers
-            correct++;
-          }
-          // if answer is wrong or blank
-          else{
-            //add to the number of wrong answers
-            incorrect++;
-          }
-        })
-    };
+    //Create conditional to determine if correct answer
+    if(userChoice===qAndA[i].correctAnswer){
+
+
+    }
+    //Create timer
+
+    //Create final page displaying score
