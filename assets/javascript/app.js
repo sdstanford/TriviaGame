@@ -103,14 +103,11 @@ var endQuiz = function () {
 
     // For loop to check answers
         function answers(){
-        var questionAnswers = quizContainer.querySelectorAll('.answers');
 
         myQuestions.forEach( (currentQuestion, questionNumber) => {
 
             // find selected answer
             var questionAnswers = questionAnswers[questionNumber];
-            var selector = 'input[name=question'+questionNumber+']:checked';
-            var userAnswer = (questionAnswers.querySelector(selector) || {}).value;
         
             // if user answer matches correct answer in array
             if(userAnswer===currentQuestion.correctAnswer){
