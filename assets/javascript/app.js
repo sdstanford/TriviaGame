@@ -62,37 +62,70 @@ var qAndA = [
         correctAnswer: "a"
     },
 ];
-   
+
+//Set score variables
+var correct = 0;
+var incorrect = 0;
 
 //TIMER FUNCTION
-        // Create timer on startup
-        function timer(){
-            var number = 100;
+    // Create timer on startup
+    function timer(){
+        var number = 100;
+        intervalId = setInterval(decrement, 1000);
+
+        //Clear timer at startup
+        function run() {
+            clearInterval(intervalId);
             intervalId = setInterval(decrement, 1000);
-            console.log(number)
-
-            //Clear timer at startup
-            function run() {
-                clearInterval(intervalId);
-                intervalId = setInterval(decrement, 1000);
-              }
-            function decrement() {
-
-                //  Decrease number by one.
-                number--;
-        
-                //  Display timer in "timer" div
-                $("#timer").text("Time Remaining: " + number);
-        
-                //  Once number hits zero...
-                if (number === 0) {
-
-                //  Alert the user that time is up.
-                alert("Time' Up!");
-                }
             }
-            run();
+        function decrement() {
+
+            //  Decrease number by one.
+            number--;
+    
+            //  Display timer in "timer" div
+            $("#timer").text("Time Remaining: " + number);
+    
+            //  Once number hits zero...
+            if (number === 0) {
+
+            //  Alert the user that time is up.
+            alert("Game Over!");
+            endQuiz();
+            clearInterval(intervalId);
+            }
         }
+        run();
+    }
+
+//Create endQuiz function to determine what to do when quiz ends
+var endQuiz = function () {
+
+    // For loop to check answers
+        function answers(){
+        var questionAnswers = quizContainer.querySelectorAll('.answers');
+
+        myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+            // find selected answer
+            var questionAnswers = questionAnswers[questionNumber];
+            var selector = 'input[name=question'+questionNumber+']:checked';
+            var userAnswer = (questionAnswers.querySelector(selector) || {}).value;
+        
+            // if user answer matches correct answer in array
+            if(userAnswer===currentQuestion.correctAnswer){
+            // add to the number of correct answers
+            correct++;
+            }
+            // if answer is wrong or blank
+            else{
+            //add to the number of wrong answers
+            incorrect++;
+            }
+        });
+        $("#primary").html("Game over! Your score: " + correct + " correct answers, " + incorrect + " incorrect answers"); 
+};
+}
 
 // Start main quiz function at startup
     window.onload = function startQuiz(){
@@ -128,35 +161,9 @@ var qAndA = [
             );
           }
         );
-      
         // Append divs to page
         $("#primary").append(output);
-    }
-      
-        // for each question...
 
-        function answers(){
-        var questionAnswers = quizContainer.querySelectorAll('.answers');
-
-        myQuestions.forEach( (currentQuestion, questionNumber) => {
-      
-        var correct = 0;
-        var incorrect = 0;
-
-          // find selected answer
-          var questionAnswers = questionAnswers[questionNumber];
-          var selector = 'input[name=question'+questionNumber+']:checked';
-          var userAnswer = (questionAnswers.querySelector(selector) || {}).value;
-      
-          // if answer is correct
-          if(userAnswer===currentQuestion.correctAnswer){
-            // add to the number of correct answers
-            correct++;
-          }
-          // if answer is wrong or blank
-          else{
-            //add to the number of wrong answers
-            incorrect++;
-          }
-        })
-    };
+    //Create click event for button to trigger endQuiz function
+    $("#btn").on("click", endQuiz())
+};
