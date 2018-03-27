@@ -104,10 +104,10 @@ var endQuiz = function () {
     // For loop to check answers
         function answers(){
 
-        myQuestions.forEach( (currentQuestion, questionNumber) => {
+        qAndA.forEach( (currentQuestion, questionNumber) => {
 
             // find selected answer
-            var questionAnswers = questionAnswers[questionNumber];
+            var questionAnswers = answers[questionNumber];
         
             // if user answer matches correct answer in array
             if(userAnswer===currentQuestion.correctAnswer){
