@@ -62,10 +62,44 @@ var qAndA = [
         correctAnswer: "a"
     },
 ];
+   
 
-// Create main quiz function at startup
+//TIMER FUNCTION
+        // Create timer on startup
+        function timer(){
+            var number = 100;
+            intervalId = setInterval(decrement, 1000);
+            console.log(number)
 
+            //Clear timer at startup
+            function run() {
+                clearInterval(intervalId);
+                intervalId = setInterval(decrement, 1000);
+              }
+            function decrement() {
+
+                //  Decrease number by one.
+                number--;
+        
+                //  Display timer in "timer" div
+                $("#timer").text("Time Remaining: " + number);
+        
+                //  Once number hits zero...
+                if (number === 0) {
+
+                //  Alert the user that time is up.
+                alert("Time' Up!");
+                }
+            }
+            run();
+        }
+
+// Start main quiz function at startup
     window.onload = function startQuiz(){
+
+    //QUIZ FUNCTION        
+    //Start timer
+    timer()
         // Create array to store quiz
         var output = [];
       
@@ -98,11 +132,6 @@ var qAndA = [
         // Append divs to page
         $("#primary").append(output);
     }
-      
-    //For each iteration of loop, display question and answers in appropriate HTML locations
-
-        // gather answer containers from our quiz
-      
       
         // for each question...
 

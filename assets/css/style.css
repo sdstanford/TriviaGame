@@ -20,13 +20,13 @@ body{
 
 #primary{
     background-color:white;
-    height:400px;
     border-style: solid;
     border-color: #0daf91;
     border-width: 5px;
     margin-top:10px;
     padding:10px;
     position: relative;
+    height:500px;
 }
 
 #btn{
@@ -44,6 +44,11 @@ body{
 #quiz-question{
     font-size: 22px;
 
+}
+
+#timer{
+    font-size:25px;
+    text-align: center;
 }
 
 #quiz-answers{
